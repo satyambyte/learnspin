@@ -1,0 +1,21 @@
+{% extends 'spinner/base.html' %}
+{% block content %}
+<h1>{{ learning_list.name }}</h1>
+<div class="actions">
+    <a href="{% url 'spin' learning_list.id %}" class="btn-spin">🎲 Spin!</a>
+    <a href="{% url 'add_item' learning_list.id %}" class="btn">+ Add Item</a>
+</div>
+
+<ul class="item-list">
+{% for item in items %}
+    <li>
+        <span class="item-title">{{ item.title }}</span>
+        <span class="weight">⚖ {{ item.weight }}</span>
+        {% if item.url %}<a href="{{ item.url }}" target="_blank">🔗 Link</a>{% endif %}
+        {% if item.is_active %}<span class="badge">In Progress</span>{% endif %}
+    </li>
+{% empty %}
+    <li>No items yet. <a href="{% url 'add_item' learning_list.id %}">Add one!</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

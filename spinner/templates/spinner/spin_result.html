@@ -1,0 +1,17 @@
+{% extends 'spinner/base.html' %}
+{% block content %}
+<h1>🎲 You spun...</h1>
+<div class="result-card">
+    <h2>{{ item.title }}</h2>
+    {% if item.url %}
+        <a href="{{ item.url }}" target="_blank">Open resource →</a>
+    {% endif %}
+</div>
+
+<h3>How did it go?</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

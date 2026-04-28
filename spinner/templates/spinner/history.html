@@ -1,0 +1,24 @@
+{% extends 'spinner/base.html' %}
+{% block content %}
+<h1>Spin History</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Outcome</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for result in results %}
+        <tr>
+            <td>{{ result.item.title }}</td>
+            <td>{{ result.get_outcome_display }}</td>
+            <td>{{ result.spun_at|date:"d M Y" }}</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="3">No history yet.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

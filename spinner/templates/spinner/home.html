@@ -1,0 +1,12 @@
+{% extends 'spinner/base.html' %}
+{% block content %}
+<h1>Your Learning Lists</h1>
+{% for list in lists %}
+    <div class="card">
+        <h2><a href="{% url 'list_detail' list.id %}">{{ list.name }}</a></h2>
+        <span class="tag">{{ list.get_category_display }}</span>
+    </div>
+{% empty %}
+    <p>No lists yet. <a href="{% url 'create_list' %}">Create your first one!</a></p>
+{% endfor %}
+{% endblock %}

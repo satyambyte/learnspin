@@ -1,0 +1,10 @@
+{% extends 'spinner/base.html' %}
+{% block content %}
+<h1>Add item to "{{ learning_list.name }}"</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Item</button>
+</form>
+<a href="{% url 'list_detail' learning_list.id %}">← Back</a>
+{% endblock %}
